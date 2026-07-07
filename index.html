@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Nail Art & Manucure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f7;
+            color: #4a4a4a;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 40px;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #d88c9a;
+            font-weight: 600;
+            margin-left: 20px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c37a88;
+        }
+
+        /* SECTION ACCUEIL */
+        .hero {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%);
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 180px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .main-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #d88c9a;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-content p {
+            font-size: 1.5rem;
+            color: #7a6b6b;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .cta-button {
+            margin-top: 40px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #d88c9a;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(216, 140, 154, 0.4);
+        }
+
+        /* SECTION GALERIE */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d88c9a;
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            height: 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) {
+            .main-content h1 { font-size: 2.5rem; }
+            .logo-container { width: 120px; top: 80px; left: 20px; }
+            nav { justify-content: center; padding: 60px 20px 20px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#galerie">Galerie</a>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Logo Nail Art"> 
+        </div>
+        <div class="main-content">
+            <h1>L'Art au Bout des Doigts</h1>
+            <p>Sublimez vos mains avec nos manucures sur mesure et nos designs nail art créatifs.</p>
+            <a href="#galerie" class="cta-button">Voir mes créations</a>
+        </div>
+    </section>
+
+    <section id="galerie" class="gallery-section">
+        <h2 class="gallery-title">Ma Galerie</h2>
+        
+        <div class="gallery-grid">
+            <!-- On a ajouté l'onclick pour chaque photo avec ton extension exacte -->
+            <div class="gallery-item" onclick="openLightbox('images/1.png')"><img src="images/1.png" alt="Nail Art 1"></div>
+            <div class="gallery-item" onclick="openLightbox('images/2.png')"><img src="images/2.png" alt="Nail Art 2"></div>
+            <div class="gallery-item" onclick="openLightbox('images/3.jpeg')"><img src="images/3.jpeg" alt="Nail Art 3"></div>
+            <div class="gallery-item" onclick="openLightbox('images/4.jpeg')"><img src="images/4.jpeg" alt="Nail Art 4"></div>
+            <div class="gallery-item" onclick="openLightbox('images/5.jpeg')"><img src="images/5.jpeg" alt="Nail Art 5"></div>
+            <div class="gallery-item" onclick="openLightbox('images/6.jpeg')"><img src="images/6.jpeg" alt="Nail Art 6"></div>
+            <div class="gallery-item" onclick="openLightbox('images/7.jpeg')"><img src="images/7.jpeg" alt="Nail Art 7"></div>
+            <div class="gallery-item" onclick="openLightbox('images/8.jpeg')"><img src="images/8.jpeg" alt="Nail Art 8"></div>
+            <div class="gallery-item" onclick="openLightbox('images/9.jpeg')"><img src="images/9.jpeg" alt="Nail Art 9"></div>
+            <div class="gallery-item" onclick="openLightbox('images/10.jpeg')"><img src="images/10.jpeg" alt="Nail Art 10"></div>
+            <div class="gallery-item" onclick="openLightbox('images/11.png')"><img src="images/11.png" alt="Nail Art 11"></div>
+            <div class="gallery-item" onclick="openLightbox('images/12.jpeg')"><img src="images/12.jpeg" alt="Nail Art 12"></div>
+            <div class="gallery-item" onclick="openLightbox('images/13.png')"><img src="images/13.png" alt="Nail Art 13"></div>
+            <div class="gallery-item" onclick="openLightbox('images/14.jpeg')"><img src="images/14.jpeg" alt="Nail Art 14"></div>
+            <div class="gallery-item" onclick="openLightbox('images/15.png')"><img src="images/15.png" alt="Nail Art 15"></div>
+            <div class="gallery-item" onclick="openLightbox('images/16.jpeg')"><img src="images/16.jpeg" alt="Nail Art 16"></div>
+            <div class="gallery-item" onclick="openLightbox('images/17.png')"><img src="images/17.png" alt="Nail Art 17"></div>
+            <div class="gallery-item" onclick="openLightbox('images/18.jpeg')"><img src="images/18.jpeg" alt="Nail Art 18"></div>
+            <div class="gallery-item" onclick="openLightbox('images/19.png')"><img src="images/19.png" alt="Nail Art 19"></div>
+            <div class="gallery-item" onclick="openLightbox('images/20.png')"><img src="images/20.png" alt="Nail Art 20"></div>
+            <div class="gallery-item" onclick="openLightbox('images/21.png')"><img src="images/21.png" alt="Nail Art 21"></div>
+            <div class="gallery-item" onclick="openLightbox('images/22.jpeg')"><img src="images/22.jpeg" alt="Nail Art 22"></div>
+            <div class="gallery-item" onclick="openLightbox('images/23.png')"><img src="images/23.png" alt="Nail Art 23"></div>
+            <div class="gallery-item" onclick="openLightbox('images/24.png')"><img src="images/24.png" alt="Nail Art 24"></div>
+            <div class="gallery-item" onclick="openLightbox('images/25.jpg')"><img src="images/25.jpg" alt="Nail Art 25"></div>
+            <div class="gallery-item" onclick="openLightbox('images/26.jpg')"><img src="images/26.jpg" alt="Nail Art 26"></div>
+            <div class="gallery-item" onclick="openLightbox('images/27.png')"><img src="images/27.png" alt="Nail Art 27"></div>
+            <div class="gallery-item" onclick="openLightbox('images/28.jpg')"><img src="images/28.jpg" alt="Nail Art 28"></div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Photo agrandie">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
